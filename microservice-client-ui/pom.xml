@@ -38,13 +38,13 @@
   			<groupId>org.springframework.cloud</groupId>
   			<artifactId>spring-cloud-starter-config</artifactId>
   		</dependency>
-  		
+
 <!-- 		Client Eureka -->
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-netflix-eureka-server</artifactId>
 		</dependency>
-		
+
 <!-- 		Ribbon - regulateur de charge -->
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
