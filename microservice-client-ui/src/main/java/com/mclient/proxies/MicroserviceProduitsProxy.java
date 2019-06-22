@@ -9,15 +9,31 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 import com.mclient.bean.ProductBean;
 
+/*
+ * EN configurant la seurite du ZUUL on obtient une erreur 401 - autorisation refusee :
+ * feign.FeignException: status 401 reading MicroserviceProduitsProxy#listeDesProduits()
+	at feign.FeignException.errorStatus(FeignException.java:78) ~[feign-core-10.1.0.jar:na]
+ * 
+ */
+
 //@FeignClient(name = "microservice-produits", url = "localhost:9001", decode404 = true)
-@FeignClient(name = "microservice-produits")
+// passe mnt par Eureka
+//@FeignClient(name = "microservice-produits")
+// passe mnt par ZUUL
+@FeignClient(name = "zuul-server")
 @RibbonClient(name = "microservice-produits")
 public interface MicroserviceProduitsProxy {
 	
-	@GetMapping(value = "/Produits")
+	// via EUreka
+	//@GetMapping(value = "/Produits")
+	// via ZUul
+	@GetMapping(value = "/microservice-produits/Produits")
 	List<ProductBean> listeDesProduits();
-	
-	@GetMapping(value = "/Produits/{id}")
+
+	// via Eureka
+	//@GetMapping(value = "/Produits/{id}")
+	// via ZUul
+	@GetMapping(value = "/microservice-produits/Produits/{id}")
 	ProductBean recupererUnProduit(@PathVariable("id") int id);
 
 }

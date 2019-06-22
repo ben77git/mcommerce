@@ -24,7 +24,7 @@ public class ClientController {
 		List<ProductBean> products = productProxy.listeDesProduits();
 		model.addAttribute("products", products);
 
-		System.out.println("LAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA products " + products == null ? "null" : products.size());
+		System.out.println("LAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA products " + (products == null ? "null" : products.size()));
 		return "Accueil";
 	}
 	
@@ -33,7 +33,7 @@ public class ClientController {
 		ProductBean product = productProxy.recupererUnProduit(id);
 		model.addAttribute("product", product);
 
-		System.out.println("LAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA product " + product == null ? "null" : product.getImage());
+		System.out.println("LAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA product " + (product == null ? "null" : product.getImage()));
 		return "detail";
 	}
 
